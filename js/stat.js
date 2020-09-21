@@ -42,11 +42,6 @@ window.renderStatistics = function (ctx, players, times) {
   // let maxTime = getMaxElement(times);
 
   for (let i = 0; i < players.length; i++) {
-    //   maxTime     times[i]
-    // ----------- = --------
-    //  barHeight        Y
-    //  Y = (barHeight * times[i]) / maxTime
-
     // рисует score
     ctx.fillStyle = `#000`;
     ctx.fillText(
@@ -55,18 +50,19 @@ window.renderStatistics = function (ctx, players, times) {
         cloudHeight - gap * 4 - textHeight - barHeight
     );
 
-    // меняет цвет bar
+    // меняет цвет bar - только сообразила как разбить на 2 группы если Выто красный bar, остальные синие. Должны менять прозрачность
     if (players[i] === `Вы`) {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     } else {
       ctx.fillStyle = `hsl(240, 100%, 50%)`;
+      // Параметр 100% должен меняться от 0 - 100% случайным обзом, как сюда применить MathRandom ()?
     }
     // рисует bar
     ctx.fillRect(
         (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
         cloudHeight - gap * 2 - textHeight - barHeight,
         barWidth,
-        barHeight
+        barHeight // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
     );
 
     // рисует имя игрока
