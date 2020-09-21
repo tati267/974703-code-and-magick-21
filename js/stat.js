@@ -1,7 +1,6 @@
 'use strict';
 let cloudWidth = 420;
 let cloudHeight = 270;
-
 let CLOUD_X = 100;
 let CLOUD_Y = 10;
 let gap = 10;
@@ -18,17 +17,17 @@ let renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, cloudWidth, cloudHeight);
 };
 
+/*
+let getMaxElement = function (arr) {
+  let maxElement = arr[0];
 
-// let getMaxElement = function (arr) {
-//  let maxElement = arr[0];
-
-// for (let i = 1; i < arr.length; i++) {
-//   if (arr[i] > maxElement) {
-//     maxElement = arr[i];
-//    }
-// }
-// };
-
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
+    }
+  }
+};
+*/
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + gap, CLOUD_Y + gap, `rgba(0, 0, 0, 0.7)`);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, `#fff`);
