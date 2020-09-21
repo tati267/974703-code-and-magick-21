@@ -18,15 +18,16 @@ let renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, cloudWidth, cloudHeight);
 };
 
-let getMaxElement = function (arr) {
-  let maxElement = arr[0];
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > maxElement) {
-      maxElement = arr[i];
-    }
-  }
-};
+// let getMaxElement = function (arr) {
+//  let maxElement = arr[0];
+
+// for (let i = 1; i < arr.length; i++) {
+//   if (arr[i] > maxElement) {
+//     maxElement = arr[i];
+//    }
+// }
+// };
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + gap, CLOUD_Y + gap, `rgba(0, 0, 0, 0.7)`);
@@ -38,7 +39,7 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillText(`Ура вы победили!`, greetingX, greetingY);
   ctx.fillText(`Список результатов:`, greetingX, greetingY + fontGap);
 
-  let maxTime = getMaxElement(times);
+  // let maxTime = getMaxElement(times);
 
   for (let i = 0; i < players.length; i++) {
     //   maxTime     times[i]
