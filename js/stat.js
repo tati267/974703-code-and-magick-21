@@ -50,12 +50,12 @@ window.renderStatistics = function (ctx, players, times) {
         cloudHeight - gap * 4 - textHeight - barHeight
     );
 
-    // меняет цвет bar - только сообразила как разбить на 2 группы если Выто красный bar, остальные синие. Должны менять прозрачность
+    // меняет цвет bar
     if (players[i] === `Вы`) {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     } else {
-      ctx.fillStyle = `hsl(240, 100%, 50%)`;
-      // Параметр 100% должен меняться от 0 - 100% случайным обзом, как сюда применить MathRandom ()?
+      let saturation = Math.round(Math.random() * 100);
+      ctx.fillStyle = `hsl(240, ` + saturation + `%, 50%)`;
     }
     // рисует bar
     ctx.fillRect(
