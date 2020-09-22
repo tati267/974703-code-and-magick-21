@@ -44,9 +44,9 @@ window.renderStatistics = function (ctx, players, times) {
     // рисует score
     ctx.fillStyle = `#000`;
     ctx.fillText(
-        (times[i]).toFixed(0),
-        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-        cloudHeight - gap * 4 - textHeight - barHeight
+      (times[i]).toFixed(0),
+      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+      cloudHeight - gap * 4 - barHeight
     );
 
     // меняет цвет bar
@@ -58,18 +58,18 @@ window.renderStatistics = function (ctx, players, times) {
     }
     // рисует bar
     ctx.fillRect(
-        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-        cloudHeight - gap * 2 - textHeight - barHeight,
-        barWidth,
-        barHeight // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
+      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+      cloudHeight - gap * 2 - barHeight,
+      barWidth,
+      barHeight // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
     );
 
     // рисует имя игрока
     ctx.fillStyle = `#000`;
     ctx.fillText(
-        players[i],
-        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-        cloudHeight - gap - textHeight
+      players[i],
+      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+      cloudHeight - gap
     );
   }
 };
