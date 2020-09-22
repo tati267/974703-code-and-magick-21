@@ -8,7 +8,6 @@ const gapBar = 50;
 const fontGap = 18;
 const greetingX = 120;
 const greetingY = 30;
-const textHeight = 16;
 const maxBarHeight = 150;
 const barWidth = 40;
 
@@ -43,9 +42,9 @@ window.renderStatistics = function (ctx, players, times) {
     // рисует score
     ctx.fillStyle = `#000`;
     ctx.fillText(
-      (times[i]).toFixed(0),
-      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-      cloudHeight - gap * 4 - (maxBarHeight * times[i]) / maxTime
+        (times[i]).toFixed(0),
+        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+        cloudHeight - gap * 4 - (maxBarHeight * times[i]) / maxTime
     );
 
     // меняет цвет bar
@@ -57,18 +56,18 @@ window.renderStatistics = function (ctx, players, times) {
     }
     // рисует bar
     ctx.fillRect(
-      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-      cloudHeight - gap * 2 - (maxBarHeight * times[i]) / maxTime,
-      barWidth,
-      (maxBarHeight * times[i]) / maxTime // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
+        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+        cloudHeight - gap * 2 - (maxBarHeight * times[i]) / maxTime,
+        barWidth,
+        (maxBarHeight * times[i]) / maxTime // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
     );
 
     // рисует имя игрока
     ctx.fillStyle = `#000`;
     ctx.fillText(
-      players[i],
-      (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-      cloudHeight - gap
+        players[i],
+        (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
+        cloudHeight - gap
     );
   }
 };
