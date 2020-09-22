@@ -1,24 +1,22 @@
 'use strict';
-let cloudWidth = 420;
-let cloudHeight = 270;
-let CLOUD_X = 100;
-let CLOUD_Y = 10;
-let gap = 10;
-let gapBar = 50;
-let fontGap = 18;
-let greetingX = 120;
-let greetingY = 30;
-let textHeight = 16;
-let barHeight = 150;
-let barWidth = 40;
+const cloudWidth = 420;
+const cloudHeight = 270;
+const CLOUD_X = 100;
+const CLOUD_Y = 10;
+const gap = 10;
+const gapBar = 50;
+const fontGap = 18;
+const greetingX = 120;
+const greetingY = 30;
+const textHeight = 16;
+const maxBarHeight = 150;
+const barWidth = 40;
 
-let renderCloud = function (ctx, x, y, color) {
+let renderCloud = (ctx, x, y, color) => {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, cloudWidth, cloudHeight);
 };
-
-/*
-let getMaxElement = function (arr) {
+const getMaxElement = (arr) => {
   let maxElement = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
@@ -26,8 +24,9 @@ let getMaxElement = function (arr) {
       maxElement = arr[i];
     }
   }
+  return maxElement;
 };
-*/
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + gap, CLOUD_Y + gap, `rgba(0, 0, 0, 0.7)`);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, `#fff`);
@@ -38,7 +37,7 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillText(`Ура вы победили!`, greetingX, greetingY);
   ctx.fillText(`Список результатов:`, greetingX, greetingY + fontGap);
 
-  // let maxTime = getMaxElement(times);
+  let maxTime = getMaxElement(times);
 
   for (let i = 0; i < players.length; i++) {
     // рисует score
@@ -46,22 +45,22 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillText(
       (times[i]).toFixed(0),
       (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-      cloudHeight - gap * 4 - barHeight
+      cloudHeight - gap * 4 - (maxBarHeight * times[i]) / maxTime
     );
 
     // меняет цвет bar
     if (players[i] === `Вы`) {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     } else {
-      let saturation = Math.round(Math.random() * 100);
+      const saturation = Math.round(Math.random() * 100);
       ctx.fillStyle = `hsl(240, ` + saturation + `%, 50%)`;
     }
     // рисует bar
     ctx.fillRect(
       (CLOUD_X + gap * 4) + (barWidth + gapBar) * i,
-      cloudHeight - gap * 2 - barHeight,
+      cloudHeight - gap * 2 - (maxBarHeight * times[i]) / maxTime,
       barWidth,
-      barHeight // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
+      (maxBarHeight * times[i]) / maxTime // когда меняю эту строчку на формулу (barHeight * times[i]) / maxTime + расскомметирую строки 22-30, 42 bar не отображается
     );
 
     // рисует имя игрока
