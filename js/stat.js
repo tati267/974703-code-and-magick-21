@@ -37,8 +37,7 @@ window.renderStatistics = (ctx, players, times) => {
   ctx.fillText(`Список результатов:`, GREETING_X, GREETING_Y + FONT_GAP);
 
   let maxTime = getMaxElement(times);
-
-  for (let i = 0; i < players.length; i++) {
+  players.forEach((player, i) => {
     // рисует score
     ctx.fillStyle = `#000`;
     ctx.fillText(
@@ -48,7 +47,7 @@ window.renderStatistics = (ctx, players, times) => {
     );
 
     // меняет цвет bar
-    if (players[i] === `Вы`) {
+    if (player === `Вы`) {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     } else {
       const saturation = Math.round(Math.random() * 100);
@@ -65,9 +64,9 @@ window.renderStatistics = (ctx, players, times) => {
     // рисует имя игрока
     ctx.fillStyle = `#000`;
     ctx.fillText(
-        players[i],
+        player,
         (CLOUD_X + GAP * 4) + (BAR_WIDTH + GAP_BAR) * i,
         CLOUD_HEIGHT - GAP
     );
-  }
+  });
 };
