@@ -22,26 +22,25 @@ const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
   .querySelector(`.setup-similar-item`);
 
 let wizards = new Array(4);
-const space = ` `;
 
 wizards = [
   {
-    name: getRandomArrayElement(WIZARD_NAMES) + space + getRandomArrayElement(WIZARD_SURENAMES),
+    name: `${getRandomArrayElement(WIZARD_NAMES)} ${getRandomArrayElement(WIZARD_SURENAMES)}`,
     coatColor: getRandomArrayElement(COAT_COLORS),
     eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomArrayElement(WIZARD_NAMES) + space + getRandomArrayElement(WIZARD_SURENAMES),
+    name: `${getRandomArrayElement(WIZARD_NAMES)} ${getRandomArrayElement(WIZARD_SURENAMES)}`,
     coatColor: getRandomArrayElement(COAT_COLORS),
     eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomArrayElement(WIZARD_NAMES) + space + getRandomArrayElement(WIZARD_SURENAMES),
+    name: `${getRandomArrayElement(WIZARD_NAMES)} ${getRandomArrayElement(WIZARD_SURENAMES)}`,
     coatColor: getRandomArrayElement(COAT_COLORS),
     eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomArrayElement(WIZARD_NAMES) + space + getRandomArrayElement(WIZARD_SURENAMES),
+    name: `${getRandomArrayElement(WIZARD_NAMES)} ${getRandomArrayElement(WIZARD_SURENAMES)}`,
     coatColor: getRandomArrayElement(COAT_COLORS),
     eyesColor: getRandomArrayElement(EYES_COLORS)
   }
