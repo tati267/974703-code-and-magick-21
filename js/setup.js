@@ -26,24 +26,8 @@ let wizards = [
   {
     name: getRandomArrayElement(WIZARD_NAMES) + ` ` + getRandomArrayElement(WIZARD_SURENAMES),
     coatColor: getRandomArrayElement(COAT_COLORS),
-    eyesColor: getRandomArrayElement(EYES_COLORS)
-  },
-  {
-    name: getRandomArrayElement(WIZARD_NAMES) + ` ` + getRandomArrayElement(WIZARD_SURENAMES),
-    coatColor: getRandomArrayElement(COAT_COLORS),
-    eyesColor: getRandomArrayElement(EYES_COLORS)
-  },
-  {
-    name: getRandomArrayElement(WIZARD_NAMES) + ` ` + getRandomArrayElement(WIZARD_SURENAMES),
-    coatColor: getRandomArrayElement(COAT_COLORS),
-    eyesColor: getRandomArrayElement(EYES_COLORS)
-  },
-  {
-    name: getRandomArrayElement(WIZARD_NAMES) + ` ` + getRandomArrayElement(WIZARD_SURENAMES),
-    coatColor: getRandomArrayElement(COAT_COLORS),
-    eyesColor: getRandomArrayElement(EYES_COLORS)
-  }
-];
+  eyesColor: getRandomArrayElement(EYES_COLORS);
+});
 
 let renderWizard = function (wizard) {
   let wizardElement = similarWizardTemplate.cloneNode(true);
