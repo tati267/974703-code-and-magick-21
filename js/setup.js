@@ -9,7 +9,7 @@ const NUMBER_OF_WIZARDS = 4;
 const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-let getRandomArrayElement = (arr) => {
+const getRandomArrayElement = (arr) => {
   return arr[getRandomInteger(0, arr.length - 1)];
 };
 
@@ -29,7 +29,7 @@ const renderWizard = (wizard) => {
   return wizardElement;
 };
 
-let wizards = [];
+const wizards = [];
 for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
   wizards.push({
     name: `${getRandomArrayElement(WIZARD_NAMES)} ${getRandomArrayElement(WIZARD_SURENAMES)}`,
@@ -38,7 +38,7 @@ for (let i = 0; i < NUMBER_OF_WIZARDS; i++) {
   });
 }
 
-let fragment = document.createDocumentFragment();
+const fragment = document.createDocumentFragment();
 wizards.forEach(function (wizard) {
   fragment.appendChild(renderWizard(wizard));
 });
