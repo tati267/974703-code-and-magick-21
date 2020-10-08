@@ -1,4 +1,5 @@
 'use strict';
+
 const WIZARD_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
 const WIZARD_SURENAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
 const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`,
@@ -15,7 +16,7 @@ const getRandomArrayElement = (arr) => {
 };
 
 const userDialog = document.querySelector(`.setup`);
-userDialog.classList.remove(`hidden`);
+userDialog.classList.add(`hidden`);
 
 const similarListElement = userDialog.querySelector(`.setup-similar-list`);
 const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
@@ -49,8 +50,13 @@ userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
 
 
 // modul4-task1
+const ESC = `Escape`;
+const ENTER = `Enter`;
 const setup = document.querySelector(`.setup`);
 const userNameInput = setup.querySelector(`.setup-user-name`);
+const coatColorInput = setup.querySelector(`.setup-coat-color`);
+const eyesColorInput = setup.querySelector(`.setup-eyes-color`);
+const fireballColorInput = setup.querySelector(`.setup-fireball-color`);
 const setupForm = setup.querySelector(`.setup-wizard-form`);
 const setupOpen = document.querySelector(`.setup-open`);
 const setupClose = setup.querySelector(`.setup-close`);
@@ -61,20 +67,20 @@ const setupFireball = setupPlayer.querySelector(`.setup-fireball`);
 const MIN_NAME_LENGTH = 2;
 const MAX_NAME_LENGTH = 25;
 // Открытие/закрытие окна настройки персонажа
-const onPopupEscPress = function (evt) {
-  if (evt.key === `Escape` && evt.target !== userNameInput) {
+const onPopupEscPress = (evt) => {
+  if (evt.key === ESC && evt.target !== userNameInput) {
     evt.preventDefault();
     closePopup();
   }
 };
 
-const onSetupSubmitClick = function () {
+const onSetupSubmitClick = () => {
   if (userNameInput.checkValidity()) {
     setupForm.submit();
   }
 };
 
-const openPopup = function () {
+const openPopup = () => {
   setup.classList.remove(`hidden`);
   document.addEventListener(`keydown`, onPopupEscPress);
   userNameInput.addEventListener(`input`, checkNameValidity);
@@ -82,7 +88,7 @@ const openPopup = function () {
   setupPlayer.addEventListener(`click`, onSetupPlayerClick);
 };
 
-const closePopup = function () {
+const closePopup = () => {
   setup.classList.add(`hidden`);
   document.removeEventListener(`keydown`, onPopupEscPress);
   userNameInput.removeEventListener(`input`, checkNameValidity);
@@ -90,22 +96,22 @@ const closePopup = function () {
   setupPlayer.removeEventListener(`click`, onSetupPlayerClick);
 };
 
-setupOpen.addEventListener(`click`, function () {
+setupOpen.addEventListener(`click`, () => {
   openPopup();
 });
 
-setupOpen.addEventListener(`keydown`, function (evt) {
-  if (evt.key === `Enter`) {
+setupOpen.addEventListener(`keydown`, (evt) => {
+  if (evt.key === ENTER) {
     openPopup();
   }
 });
 
-setupClose.addEventListener(`click`, function () {
+setupClose.addEventListener(`click`, () => {
   closePopup();
 });
 
-setupClose.addEventListener(`keydown`, function (evt) {
-  if (evt.key === `Enter`) {
+setupClose.addEventListener(`keydown`, (evt) => {
+  if (evt.key === ENTER) {
     closePopup();
   }
 });
@@ -124,13 +130,17 @@ const checkNameValidity = () => {
   userNameInput.reportValidity();
 };
 // Изменение цвета мантии,глаз и fireball персонажа по нажатию
-const onSetupPlayerClick = function (evt) {
-  let targetElement = evt.target;
+const onSetupPlayerClick = (evt) => {
+  const targetElement = evt.target;
   if (targetElement === setupWizardCoat) {
     targetElement.style.fill = getRandomArrayElement(COAT_COLORS);
+    coatColorInput.value = targetElement.style.fill;
   } else if (targetElement === setupWizardEyes) {
     targetElement.style.fill = getRandomArrayElement(EYES_COLORS);
+    eyesColorInput.value = targetElement.style.fill;
   } else if (targetElement === setupFireball) {
     targetElement.parentNode.style.background = getRandomArrayElement(FIREBALL_COLORS);
+    fireballColorInput.value = targetElement.style.fill;
   }
 };
+
