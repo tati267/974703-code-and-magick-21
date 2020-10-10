@@ -139,8 +139,9 @@ const onSetupPlayerClick = (evt) => {
     targetElement.style.fill = getRandomArrayElement(EYES_COLORS);
     eyesColorInput.value = targetElement.style.fill;
   } else if (targetElement === setupFireball) {
-    targetElement.parentNode.style.background = getRandomArrayElement(FIREBALL_COLORS);
-    fireballColorInput.value = targetElement.style.background;
+    const RANDOM_FIREBALL_COLOR = getRandomArrayElement(FIREBALL_COLORS);
+    targetElement.parentNode.style.background = RANDOM_FIREBALL_COLOR;
+    fireballColorInput.value = RANDOM_FIREBALL_COLOR;
   }
 };
 
