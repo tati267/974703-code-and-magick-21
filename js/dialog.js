@@ -55,7 +55,4 @@
       closePopup();
     }
   });
-
-  window.dialog = {
-  };
 })();
