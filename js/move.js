@@ -4,7 +4,7 @@
 
   const dialogHandle = window.setup.setup.querySelector(`.upload`);
 
-  dialogHandle.addEventListener(`mousedown`, function (evt) {
+  dialogHandle.addEventListener(`mousedown`, (evt) => {
     evt.preventDefault();
 
     let startCoords = {
@@ -14,7 +14,7 @@
 
     let dragged = false;
 
-    const onMouseMove = function (moveEvt) {
+    const onMouseMove = (moveEvt) => {
       moveEvt.preventDefault();
 
       dragged = true;
@@ -33,7 +33,7 @@
       window.setup.setup.style.left = (window.setup.setup.offsetLeft - shift.x) + `px`;
     };
 
-    const onMouseUp = function (upEvt) {
+    const onMouseUp = (upEvt) => {
       upEvt.preventDefault();
       document.removeEventListener(`mousemove`, onMouseMove);
       document.removeEventListener(`mouseup`, onMouseUp);
