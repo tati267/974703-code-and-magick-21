@@ -10,15 +10,15 @@
 
   const MIN_NAME_LENGTH = 2;
   const MAX_NAME_LENGTH = 25;
-  const setup = document.querySelector(`.setup`);
-  const userNameInput = setup.querySelector(`.setup-user-name`);
-  const coatColorInput = setup.querySelector(`.setup-coat-color`);
-  const eyesColorInput = setup.querySelector(`.setup-eyes-color`);
-  const fireballColorInput = setup.querySelector(`.setup-fireball-color`);
-  const setupPlayer = setup.querySelector(`.setup-player`);
-  const setupWizardCoat = setupPlayer.querySelector(`.wizard-coat`);
-  const setupWizardEyes = setupPlayer.querySelector(`.wizard-eyes`);
-  const setupFireball = setupPlayer.querySelector(`.setup-fireball`);
+  const popup = document.querySelector(`.setup`);
+  const name = popup.querySelector(`.setup-user-name`);
+  const coatColor = popup.querySelector(`.setup-coat-color`);
+  const eyesColor = popup.querySelector(`.setup-eyes-color`);
+  const fireballColor = popup.querySelector(`.setup-fireball-color`);
+  const player = popup.querySelector(`.setup-player`);
+  const setupWizardCoat = player.querySelector(`.wizard-coat`);
+  const setupWizardEyes = player.querySelector(`.wizard-eyes`);
+  const setupFireball = player.querySelector(`.setup-fireball`);
 
   const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -64,38 +64,38 @@
   // modul4-task1
   // Валидация ввода имени персонажа
   const checkNameValidity = () => {
-    const valueLength = window.dialog.userNameInput.value.length;
+    const valueLength = window.dialog.name.value.length;
 
     if (valueLength < MIN_NAME_LENGTH) {
-      userNameInput.setCustomValidity(`'Ещё ${(MIN_NAME_LENGTH - valueLength)} симв.`);
+      name.setCustomValidity(`'Ещё ${(MIN_NAME_LENGTH - valueLength)} симв.`);
     } else if (valueLength > MAX_NAME_LENGTH) {
-      userNameInput.setCustomValidity(`Удалите лишние ${(valueLength - MAX_NAME_LENGTH)} симв.`);
+      name.setCustomValidity(`Удалите лишние ${(valueLength - MAX_NAME_LENGTH)} симв.`);
     } else {
-      userNameInput.setCustomValidity(``);
+      name.setCustomValidity(``);
     }
-    userNameInput.reportValidity();
+    name.reportValidity();
   };
   // Изменение цвета мантии,глаз и fireball персонажа по нажатию
-  const onSetupPlayerClick = (evt) => {
+  const onPlayerClick = (evt) => {
     const targetElement = evt.target;
     if (targetElement === setupWizardCoat) {
       targetElement.style.fill = getRandomArrayElement(COAT_COLORS);
-      coatColorInput.value = targetElement.style.fill;
+      coatColor.value = targetElement.style.fill;
     } else if (targetElement === setupWizardEyes) {
       targetElement.style.fill = getRandomArrayElement(EYES_COLORS);
-      eyesColorInput.value = targetElement.style.fill;
+      eyesColor.value = targetElement.style.fill;
     } else if (targetElement === setupFireball) {
       const RANDOM_FIREBALL_COLOR = getRandomArrayElement(FIREBALL_COLORS);
       targetElement.parentNode.style.background = RANDOM_FIREBALL_COLOR;
-      fireballColorInput.value = RANDOM_FIREBALL_COLOR;
+      fireballColor.value = RANDOM_FIREBALL_COLOR;
     }
   };
 
   window.setup = {
-    setup,
-    userNameInput,
-    setupPlayer,
+    popup,
+    name,
+    player,
     checkNameValidity,
-    onSetupPlayerClick
+    onPlayerClick
   };
 })();

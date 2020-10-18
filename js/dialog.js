@@ -2,38 +2,38 @@
 (function () {
   const ESC = `Escape`;
   const ENTER = `Enter`;
-  const setupForm = window.setup.setup.querySelector(`.setup-wizard-form`);
+  const form = window.setup.popup.querySelector(`.setup-wizard-form`);
   const setupOpen = document.querySelector(`.setup-open`);
-  const setupClose = window.setup.setup.querySelector(`.setup-close`);
+  const setupClose = window.setup.popup.querySelector(`.setup-close`);
 
   // Открытие/закрытие окна настройки персонажа
   const onPopupEscPress = (evt) => {
-    if (evt.key === ESC && evt.target !== window.setup.userNameInput) {
+    if (evt.key === ESC && evt.target !== window.setup.name) {
       evt.preventDefault();
       close();
     }
   };
 
   const onSetupSubmitClick = () => {
-    if (window.setup.userNameInput.checkValidity()) {
-      setupForm.submit();
+    if (window.setup.name.checkValidity()) {
+      form.submit();
     }
   };
 
   const open = () => {
-    window.setup.setup.classList.remove(`hidden`);
+    window.setup.popup.classList.remove(`hidden`);
     document.addEventListener(`keydown`, onPopupEscPress);
-    window.setup.userNameInput.addEventListener(`input`, window.setup.checkNameValidity);
-    window.setup.userNameInput.addEventListener(`input`, onSetupSubmitClick);
-    window.setup.setupPlayer.addEventListener(`click`, window.setup.onSetupPlayerClick);
+    window.setup.name.addEventListener(`input`, window.setup.checkNameValidity);
+    window.setup.name.addEventListener(`input`, onSetupSubmitClick);
+    window.setup.player.addEventListener(`click`, window.setup.onPlayerClick);
   };
 
   const close = () => {
-    window.setup.setup.classList.add(`hidden`);
+    window.setup.popup.classList.add(`hidden`);
     document.removeEventListener(`keydown`, onPopupEscPress);
-    window.setup.userNameInput.removeEventListener(`input`, window.setup.checkNameValidity);
-    window.setup.userNameInput.removeEventListener(`input`, onSetupSubmitClick);
-    window.setup.setupPlayer.removeEventListener(`click`, window.setup.onSetupPlayerClick);
+    window.setup.name.removeEventListener(`input`, window.setup.checkNameValidity);
+    window.setup.name.removeEventListener(`input`, onSetupSubmitClick);
+    window.setup.player.removeEventListener(`click`, window.setup.onPlayerClick);
   };
 
   setupOpen.addEventListener(`click`, () => {

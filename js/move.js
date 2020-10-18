@@ -2,7 +2,7 @@
 (function () {
   // перемещение окна module5-task1
 
-  const dialogHandle = window.setup.setup.querySelector(`.upload`);
+  const dialogHandle = window.setup.popup.querySelector(`.upload`);
 
   dialogHandle.addEventListener(`mousedown`, (evt) => {
     evt.preventDefault();
@@ -29,8 +29,8 @@
         y: moveEvt.clientY
       };
 
-      window.setup.setup.style.top = (window.setup.setup.offsetTop - shift.y) + `px`;
-      window.setup.setup.style.left = (window.setup.setup.offsetLeft - shift.x) + `px`;
+      window.setup.popup.style.top = (window.setup.popup.offsetTop - shift.y) + `px`;
+      window.setup.popup.style.left = (window.setup.popup.offsetLeft - shift.x) + `px`;
     };
 
     const onMouseUp = (upEvt) => {
