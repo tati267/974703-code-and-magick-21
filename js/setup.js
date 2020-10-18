@@ -35,7 +35,7 @@
     .content
     .querySelector(`.setup-similar-item`);
 
-  const renderWizard = (wizard) => {
+  const render = (wizard) => {
     const wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
     wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.coatColor;
@@ -54,7 +54,7 @@
 
   const fragment = document.createDocumentFragment();
   wizards.forEach(function (wizard) {
-    fragment.appendChild(renderWizard(wizard));
+    fragment.appendChild(render(wizard));
   });
 
   similarListElement.appendChild(fragment);

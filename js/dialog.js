@@ -10,7 +10,7 @@
   const onPopupEscPress = (evt) => {
     if (evt.key === ESC && evt.target !== window.setup.userNameInput) {
       evt.preventDefault();
-      closePopup();
+      close();
     }
   };
 
@@ -20,7 +20,7 @@
     }
   };
 
-  const openPopup = () => {
+  const open = () => {
     window.setup.setup.classList.remove(`hidden`);
     document.addEventListener(`keydown`, onPopupEscPress);
     window.setup.userNameInput.addEventListener(`input`, window.setup.checkNameValidity);
@@ -28,7 +28,7 @@
     window.setup.setupPlayer.addEventListener(`click`, window.setup.onSetupPlayerClick);
   };
 
-  const closePopup = () => {
+  const close = () => {
     window.setup.setup.classList.add(`hidden`);
     document.removeEventListener(`keydown`, onPopupEscPress);
     window.setup.userNameInput.removeEventListener(`input`, window.setup.checkNameValidity);
@@ -37,22 +37,22 @@
   };
 
   setupOpen.addEventListener(`click`, () => {
-    openPopup();
+    open();
   });
 
   setupOpen.addEventListener(`keydown`, (evt) => {
     if (evt.key === ENTER) {
-      openPopup();
+      open();
     }
   });
 
   setupClose.addEventListener(`click`, () => {
-    closePopup();
+    close();
   });
 
   setupClose.addEventListener(`keydown`, (evt) => {
     if (evt.key === ENTER) {
-      closePopup();
+      close();
     }
   });
 })();
