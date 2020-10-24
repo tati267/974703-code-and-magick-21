@@ -55,6 +55,8 @@
     });
   }
 
+  // module6-task1
+  // Вынесём для удобства обработчик успешной загрузки и обработчик ошибки в переменные
   let successHandler = () => {
     const fragment = document.createDocumentFragment();
     wizards.forEach(function (wizard) {
@@ -77,6 +79,7 @@
   };
 
   window.load(successHandler, errorHandler);
+
   //  Диалог закроется, как только данные будут успешно сохранены.
 
   form.addEventListener(`submit`, function (evt) {
