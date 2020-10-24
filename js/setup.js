@@ -58,7 +58,7 @@
   // module6-task1
   // Вынесём для удобства обработчик успешной загрузки и обработчик ошибки в переменные
   let successHandler = () => {
-    const fragment = document.createDocumentFragment();
+    let fragment = document.createDocumentFragment();
     wizards.forEach(function (wizard) {
       fragment.appendChild(render(wizard));
     });
@@ -66,7 +66,7 @@
     userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
   };
 
-  let errorHandler = function (errorMessage) {
+  let errorHandler = (errorMessage) => {
     let node = document.createElement(`div`);
     node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
     node.style.position = `absolute`;
@@ -78,13 +78,13 @@
     document.body.insertAdjacentElement(`afterbegin`, node);
   };
 
-  window.load(successHandler, errorHandler);
+  window.backend.load(successHandler, errorHandler);
 
   //  Диалог закроется, как только данные будут успешно сохранены.
 
   form.addEventListener(`submit`, function (evt) {
-    window.upload(new FormData(form), function () {
-      userDialog.querySelector(`.setup-similar`).classList.add(`hidden`);
+    window.backend.save(new FormData(form), () => {
+      userDialog.classList.add(`hidden`);
     });
     evt.preventDefault();
   });
