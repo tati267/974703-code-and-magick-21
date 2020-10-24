@@ -1,8 +1,7 @@
 "use strict";
 (function () {
   // перемещение окна module5-task1
-
-  const dialogHandle = window.setup.popup.querySelector(`.upload`);
+  const dialogHandle = document.querySelector(`.upload`);
 
   dialogHandle.addEventListener(`mousedown`, (evt) => {
     evt.preventDefault();

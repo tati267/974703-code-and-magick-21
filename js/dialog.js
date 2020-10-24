@@ -1,14 +1,10 @@
 "use strict";
 (function () {
-  const ESC = `Escape`;
-  const ENTER = `Enter`;
-  const form = window.setup.popup.querySelector(`.setup-wizard-form`);
   const setupOpen = document.querySelector(`.setup-open`);
-  const setupClose = window.setup.popup.querySelector(`.setup-close`);
-
+  const setupClose = document.querySelector(`.setup-close`);
   // Открытие/закрытие окна настройки персонажа
   const onPopupEscPress = (evt) => {
-    if (evt.key === ESC && evt.target !== window.setup.name) {
+    if (evt.key === window.setup.ESC && evt.target !== window.setup.name) {
       evt.preventDefault();
       close();
     }
@@ -16,7 +12,7 @@
 
   const onSetupSubmitClick = () => {
     if (window.setup.name.checkValidity()) {
-      form.submit();
+      window.setup.form.submit();
     }
   };
 
@@ -41,7 +37,7 @@
   });
 
   setupOpen.addEventListener(`keydown`, (evt) => {
-    if (evt.key === ENTER) {
+    if (evt.key === window.setup.ENTER) {
       open();
     }
   });
@@ -51,7 +47,7 @@
   });
 
   setupClose.addEventListener(`keydown`, (evt) => {
-    if (evt.key === ENTER) {
+    if (evt.key === window.setup.ENTER) {
       close();
     }
   });

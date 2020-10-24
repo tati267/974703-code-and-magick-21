@@ -19,6 +19,9 @@
   const setupWizardCoat = player.querySelector(`.wizard-coat`);
   const setupWizardEyes = player.querySelector(`.wizard-eyes`);
   const setupFireball = player.querySelector(`.setup-fireball`);
+  const ESC = `Escape`;
+  const ENTER = `Enter`;
+  const form = popup.querySelector(`.setup-wizard-form`);
 
   const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -52,15 +55,36 @@
     });
   }
 
-  const fragment = document.createDocumentFragment();
-  wizards.forEach(function (wizard) {
-    fragment.appendChild(render(wizard));
+  let successHandler = () => {
+    const fragment = document.createDocumentFragment();
+    wizards.forEach(function (wizard) {
+      fragment.appendChild(render(wizard));
+    });
+    similarListElement.appendChild(fragment);
+    userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
+  };
+
+  let errorHandler = function (errorMessage) {
+    let node = document.createElement(`div`);
+    node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
+    node.style.position = `absolute`;
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = `30px`;
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement(`afterbegin`, node);
+  };
+
+  window.load(successHandler, errorHandler);
+  //  Диалог закроется, как только данные будут успешно сохранены.
+
+  form.addEventListener(`submit`, function (evt) {
+    window.upload(new FormData(form), function () {
+      userDialog.querySelector(`.setup-similar`).classList.add(`hidden`);
+    });
+    evt.preventDefault();
   });
-
-  similarListElement.appendChild(fragment);
-  userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
-
-
   // modul4-task1
   // Валидация ввода имени персонажа
   const checkNameValidity = () => {
@@ -95,6 +119,9 @@
     popup,
     name,
     player,
+    ESC,
+    ENTER,
+    form,
     checkNameValidity,
     onPlayerClick
   };
