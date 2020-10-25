@@ -57,8 +57,8 @@
 
   // module6-task1
   // Вынесём для удобства обработчик успешной загрузки и обработчик ошибки в переменные
-  let successHandler = () => {
-    let fragment = document.createDocumentFragment();
+  const successHandler = () => {
+    const fragment = document.createDocumentFragment();
     wizards.forEach(function (wizard) {
       fragment.appendChild(render(wizard));
     });
@@ -66,8 +66,8 @@
     userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
   };
 
-  let errorHandler = (errorMessage) => {
-    let node = document.createElement(`div`);
+  const errorHandler = (errorMessage) => {
+    const node = document.createElement(`div`);
     node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
     node.style.position = `absolute`;
     node.style.left = 0;

@@ -1,13 +1,13 @@
 'use strict';
 (function () {
 
-  const load = function (onLoad, onError) {
+  const load = (onLoad, onError) => {
     const TIMEOUT_IN_MS = 10000;
     const URL = `https://21.javascript.pages.academy/code-and-magick/data`;
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
-    xhr.addEventListener(`load`, function () {
+    xhr.addEventListener(`load`, () => {
       let error;
       switch (xhr.status) {
         case 200:
@@ -25,7 +25,7 @@
           break;
 
         default:
-          error = `Cтатус ответа: : ` + xhr.status + ` ` + xhr.statusText;
+          error = `Cтатус ответа: : ${xhr.status} ${xhr.statusText}`;
       }
 
       if (error) {
@@ -33,11 +33,11 @@
       }
     });
 
-    xhr.addEventListener(`error`, function () {
+    xhr.addEventListener(`error`, () => {
       onError(`Произошла ошибка соединения`);
     });
-    xhr.addEventListener(`timeout`, function () {
-      onError(`Запрос не успел выполниться за ` + xhr.timeout + `мс`);
+    xhr.addEventListener(`timeout`, () => {
+      onError(`Запрос не успел выполниться за ${xhr.timeout} мс`);
     });
 
     xhr.timeout = TIMEOUT_IN_MS;
@@ -51,7 +51,7 @@
     const xhr = new XMLHttpRequest();
     xhr.responseType = `json`;
 
-    xhr.addEventListener(`load`, function () {
+    xhr.addEventListener(`load`, () => {
       onLoad(xhr.response);
     });
 
